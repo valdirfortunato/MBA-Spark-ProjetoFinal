@@ -1,0 +1,44 @@
+------- Spark and Notebook -------
+
+https://jupyter-docker-stacks.readthedocs.io/en/latest/using/specifics.html#build-an-image-with-a-different-version-of-spark
+https://hub.docker.com/r/jupyter/pyspark-notebook
+	
+docker pull jupyter/pyspark-notebook
+
+docker images 
+	
+	docker run -d --name pyspark --rm -p 8888:8888 -v /c/Users/leandro.ferreira/projects/python/impacta_pyspark:/home/jovyan/work 8109d1c1daed
+	
+	jupyter server list
+
+	
+	
+	
+------- Kafka -------
+	https://hub.docker.com/r/bitnami/kafka - Apache Kafka development setup example (version 3)
+	
+	docker-compose.yml
+	docker-compose up -d
+	
+
+	kafka-console-producer.sh --bootstrap-server localhost:9092 --topic nome_topico	
+	kafka-console-producer.sh --broker-list kafka:9092 --topic test
+	kafka-console-consumer.sh --bootstrap-server kafka:9092 --topic test --from-beginning
+	
+	
+	
+	
+	
+	
+	
+Pyspark Packages
+
+
+scala_version = '2.12'
+spark_version = '3.3.1'
+kafka_version = '3.3.1'
+
+packages = [
+    f'org.apache.spark:spark-sql-kafka-0-10_{scala_version}:{spark_version}',
+    'org.apache.kafka:kafka-clients:{kafka_version}'
+]
