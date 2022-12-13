@@ -1,0 +1,86 @@
+##Instalar o Docker Desktop
+##https://docs.docker.com/desktop/install/windows-install/
+##Definir como default o WSL2
+##Executar os comandos abaixo no powershell
+
+
+------- Spark and Notebook -------
+
+https://jupyter-docker-stacks.readthedocs.io/en/latest/using/specifics.html#build-an-image-with-a-different-version-of-spark
+https://hub.docker.com/r/jupyter/pyspark-notebook
+
+##Baixa a imagem do docker	
+docker pull jupyter/pyspark-notebook
+
+##Lista as imagens
+docker images 
+
+##Mapeia a pasta docker em um diretório no computador e inicia	
+	docker run -d --name pyspark --rm -p 8888:8888 -v /c/Users/valdi/Documents/Spark/Docker:/home/jovyan/work 8109d1c1daed
+	docker run -d --name pyspark --rm -p 8888:8888 -v /c/Users/valdi/Documents/Spark/Docker:/home/jovyan/work jupyter/pyspark-notebook
+	
+	docker run -d --name pyspark --rm -p 8888:8888 -v /c/Users/valdi/Documents/Spark/TrabalhoFinal:/home/jovyan/work jupyter/pyspark-notebook
+	docker run -d --name pyspark --rm -p 8888:8888 -v /c/Users/valdi/Documents/Spark/TrabalhoFinal:/home/jovyan/work jupyter/pyspark-notebook
+	docker run -d --name pyspark --rm -p 8888:8888 -v /c/Users/valdi/Documents/Spark/TrabalhoFinal:/home/jovyan/work jupyter/pyspark-notebook
+	
+##Este comando deveria subir o docker setando a senha, porém não funcionou	
+	docker run -d --name pyspark --rm -p 8888:8888 -v /c/Users/valdi/Documents/Spark/TrabalhoFinal:/home/jovyan/work -e GRANT_SUDO=yes -e PASSWORD="xxxxxxxx" jupyter/pyspark-notebook
+	
+##Para abrir o shell do container, deve-se instalar a extensão docker no Visual Code e clicar na imagem em questão > Atach Shell
+
+##Exibe a string de conexão do jupyter, esta deve ser copiada e aberta no browser, substituindo o id gerado antes da porta, por localhost
+	jupyter server list
+
+
+	
+------- Kafka -------
+	https://hub.docker.com/r/bitnami/kafka - Apache Kafka development setup example (version 3)
+	
+	docker-compose.yml ##(Copiar o arquivo docker-compose.yml em uma pasta)
+	docker-compose up -d ##Executar de dentro da pasta onde salvou o arquivo docker-compose.yml)
+	
+	
+	kafka-topics.sh --version  ##Lista a versao do kafka
+
+##Teste do producer e do consumer do topico test
+	kafka-console-producer.sh --broker-list kafka:9092 --topic test
+	kafka-console-consumer.sh --bootstrap-server kafka:9092 --topic test --from-beginning
+	
+##Criacao do topico sink
+	kafka-topics.sh --bootstrap-server localhost:9092 --topic sink --create --partitions 1
+	kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic sink --from-beginning
+	
+##Lista os topicos
+	kafka-topics.sh --list --bootstrap-server localhost:9092
+
+##Exclui um topico
+    kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic sink
+	kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic test
+	
+##Desliga os dockers	
+	docker-compose down ##(Desliga o docker - executar dentro da pasta do yml)
+
+##Exibe o status do docker
+	docker ps
+##Para um docker especifico
+	docker stop nome do docker
+	
+	
+	
+Pyspark Packages
+
+
+scala_version = '2.12'
+spark_version = '3.3.1'
+kafka_version = '3.3.1'
+
+packages = [
+    f'org.apache.spark:spark-sql-kafka-0-10_{scala_version}:{spark_version}',
+    'org.apache.kafka:kafka-clients:{kafka_version}'
+]
+
+
+
+
+##Verifica o ip do container
+	docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id
