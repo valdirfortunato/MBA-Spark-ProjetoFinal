@@ -15,13 +15,12 @@ docker pull jupyter/pyspark-notebook
 ##Lista as imagens
 docker images 
 
-##Mapeia a pasta docker em um diretório no computador e inicia	
+##Mapeia a pasta docker em um diretório no computador e inicia	(substituir pelo caminho da maquina)
 	docker run -d --name pyspark --rm -p 8888:8888 -v /c/Users/valdi/Documents/Spark/Docker:/home/jovyan/work 8109d1c1daed
 	docker run -d --name pyspark --rm -p 8888:8888 -v /c/Users/valdi/Documents/Spark/Docker:/home/jovyan/work jupyter/pyspark-notebook
 	
 	docker run -d --name pyspark --rm -p 8888:8888 -v /c/Users/valdi/Documents/Spark/TrabalhoFinal:/home/jovyan/work jupyter/pyspark-notebook
-	docker run -d --name pyspark --rm -p 8888:8888 -v /c/Users/valdi/Documents/Spark/TrabalhoFinal:/home/jovyan/work jupyter/pyspark-notebook
-	docker run -d --name pyspark --rm -p 8888:8888 -v /c/Users/valdi/Documents/Spark/TrabalhoFinal:/home/jovyan/work jupyter/pyspark-notebook
+
 	
 ##Este comando deveria subir o docker setando a senha, porém não funcionou	
 	docker run -d --name pyspark --rm -p 8888:8888 -v /c/Users/valdi/Documents/Spark/TrabalhoFinal:/home/jovyan/work -e GRANT_SUDO=yes -e PASSWORD="xxxxxxxx" jupyter/pyspark-notebook
