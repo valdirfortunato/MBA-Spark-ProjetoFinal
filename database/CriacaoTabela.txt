@@ -1,0 +1,32 @@
+CREATE TABLE "tb_cliente" (
+	"cod_cliente"	INTEGER,
+	"nome"	TEXT,
+	"idade"	INT,
+	"gerente_conta"	TEXT,
+	"conta_corrente"	INT,
+	"tipo_conta"	TEXT,
+	"score"	INT,
+	PRIMARY KEY("cod_cliente")
+);
+
+
+INSERT INTO tb_cliente ([cod_cliente],[nome], [idade], [gerente_conta], [conta_corrente], [tipo_conta], [score]) 
+VALUES(1,'Joao',25,'Fulano de tal',1234, 'Povao', 50);
+
+INSERT INTO tb_cliente ([cod_cliente],[nome], [idade], [gerente_conta], [conta_corrente], [tipo_conta], [score]) 
+VALUES(2,'Maria',30,'Fulano de tal',4321, 'Chefao', 90);
+
+INSERT INTO tb_cliente ([cod_cliente],[nome], [idade], [gerente_conta], [conta_corrente], [tipo_conta], [score]) 
+VALUES(3,'Pedro',32,'Beltrano',1212, 'Ricao', 95);
+
+INSERT INTO tb_cliente ([cod_cliente],[nome], [idade], [gerente_conta], [conta_corrente], [tipo_conta], [score]) 
+VALUES(4,'Sebastiao',44,'Beltrano',3232, 'Ricao', 92);
+
+INSERT INTO tb_cliente ([cod_cliente],[nome], [idade], [gerente_conta], [conta_corrente], [tipo_conta], [score]) 
+VALUES(5,'Jose',44,'Beltrano',3232, 'Povao', 30);
+
+INSERT INTO tb_cliente ([cod_cliente],[nome], [idade], [gerente_conta], [conta_corrente], [tipo_conta], [score]) 
+VALUES(6,'Joana',44,'Fulano de tal',3232, 'Povao', 35);
+
+
+SELECT * FROM tb_cliente;
